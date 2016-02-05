@@ -7,7 +7,7 @@ A javascript utility to score a bowling game interactively
 ## Working on the project
 
 ### Prerequisites
-* node.js version 4 or newer
+* node.js version 4 or newer (this project uses ES6)
 
 ### Workspace Setup
 * Run `npm install` to pull down the project packages

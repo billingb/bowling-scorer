@@ -1,0 +1,32 @@
+{
+  "name": "bowling-scorer",
+  "version": "0.1.0",
+  "description": "Input bowling rolls and the scorer will compute the score",
+  "main": "application.js",
+  "scripts": {
+    "lint": "jshint src/* spec/*",
+    "test": "mocha spec",
+    "test:watch": "npm run test -- -w",
+    "start": "src/application.js",
+    "exec": "src/application.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/billingb/bowling-scorer.git"
+  },
+  "author": "Brendan Billingsley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/billingb/bowling-scorer/issues"
+  },
+  "homepage": "https://github.com/billingb/bowling-scorer",
+  "dependencies": {
+    "immutable": "^3.7.6",
+    "lodash": "^4.2.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "jshint": "^2.9.1",
+    "mocha": "^2.4.5"
+  }
+}
