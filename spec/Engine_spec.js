@@ -1,7 +1,6 @@
-var should = require('chai').should();
+require('chai').should();
 var Engine = require('../src/Engine.js');
 var Immutable = require('immutable');
-var _ = require('lodash');
 
 
 describe('Engine', function () {
