@@ -1,18 +1,23 @@
 var exports = module.exports = {};
 var _ = require('lodash');
+var Scorer = require('./Scorer');
+var Parser = require('./Parser');
 
-const VALID_INPUT = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '/', 'x', 'X'];
 
-function parse(line) {
-  var input = line.trim();
-  if (!_.includes(VALID_INPUT, input)) {
-    throw new Error("Invalid input: " + input);
-  }
-  return input;
-}
 
 exports.process = function(line, state) {
-  var parsedInput = parse(line);
-  var newState = state.set('score', parsedInput);
-  return newState;
+  try {
+    var parsedInput = Parser.parseBallInput(line);
+    var newState = state.set('score', Scorer.recordBall(state.get('score'), parsedInput));
+    if (Scorer.isEndOfGame(newState.get('score'))) {
+      console.log('Game Completed!')
+      console.log('Game Score: ' + Scorer.score(newState.get('score')));
+      newState = newState.set('completed', true);
+    }
+    return newState;
+  } catch (e) {
+    console.log(e);
+    console.log('Please re-enter ball');
+    return state;
+  }
 };

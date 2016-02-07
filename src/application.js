@@ -10,9 +10,11 @@ var rl = readline.createInterface({
 });
 
 
-var state = Immutable.Map({});
+var state = Immutable.Map({score: '', completed: false});
 
 rl.on('line', function(line){
     state = BowlingScorer.process(line, state);
-    console.log(state);
+    if(state.get('completed')) {
+      process.exit();
+    }
 });
