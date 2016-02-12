@@ -18,7 +18,7 @@ function findCurrentPlayer(state) {
     if(state.get('frame') < 10) {
       return score.length < (state.get('frame') * 2);
     } else {
-      return !Scorer.isEndOfGame(score)
+      return !Scorer.isEndOfGame(score);
     }
   });
 }
@@ -34,7 +34,7 @@ function processGame(line, state) {
     newState = newState.set('finalScores', Immutable.List(_.map(currentScores.toJS(), (scoreLine) => {
         return Scorer.score(scoreLine);
     })));
-  } else if(findCurrentPlayer(newState) == -1) {
+  } else if(findCurrentPlayer(newState) === -1) {
     newState = newState.set('frame', newState.get('frame') + 1);
   }
   return newState;

@@ -15,7 +15,7 @@ rl.on('line', function(line){
     if(BowlingScorer.isCompletedState(state)) {
       console.log('Game Complete!');
       console.log('Final Scores:');
-      _.forEach(state.get('finalScores').toJS(), (score) => {console.log(score)});
+      _.forEach(state.get('finalScores').toJS(), (score) => {console.log(score);});
       process.exit();
     }
 });
