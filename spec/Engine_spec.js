@@ -46,7 +46,7 @@ describe('Engine', function () {
     state1.get('playerScores').get(0).should.eql('x x x x x x x x x x x 5');
   });
 
-  it('should mark game complete and add final scores when final player finished game', function () {
+  it('should mark game complete and add final scores when final player finishes game', function () {
     var initState = Immutable.Map({gameState: 'in progress',
       playerScores: Immutable.List(['x x x x x x x x x x x x ', '2222222222222222222']), frame: 10});
     var state1 = Engine.process('5', initState);

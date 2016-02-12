@@ -10,6 +10,7 @@ var rl = readline.createInterface({
 });
 
 var state = BowlingScorer.newGameState();
+console.log('Please enter number of players: ');
 rl.on('line', function(line){
     state = BowlingScorer.process(line, state);
     if(BowlingScorer.isCompletedState(state)) {

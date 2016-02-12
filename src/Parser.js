@@ -10,3 +10,11 @@ exports.parseBallInput = function(line) {
   }
   return input;
 };
+
+exports.parseWholePositiveNumber = function (line) {
+  var input = line.trim();
+  if(! /^[1-9]\d*$/.test(input)) {
+    throw new Error('Players must be whole number greater then 0');
+  }
+  return parseInt(input);
+};

@@ -5,11 +5,12 @@ var Immutable = require('immutable');
 var _ = require('lodash');
 
 function processSetup(line, state) {
-  var players = parseInt(line);
+  var players = Parser.parseWholePositiveNumber(line);
   var playerScores = Immutable.List();
   for(var i = 0; i < players; i++) {
     playerScores = playerScores.push('');
   }
+  console.log('Enter pins knocked down for each roll by each player hitting enter after each roll: ');
   return state.set('gameState', 'in progress').set('playerScores', playerScores).set('frame', 1);
 }
 
@@ -57,8 +58,8 @@ exports.process = function(line, state) {
         return processGame(line, state);
     }
   } catch (e) {
-    console.log(e);
-    console.log('Please re-enter ball');
+    console.log(e.message);
+    console.log('Please re-enter correct value: ');
     return state;
   }
 };

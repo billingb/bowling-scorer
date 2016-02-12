@@ -3,7 +3,9 @@ var _ = require('lodash');
 
 exports.recordBall = function(scoreLine, pinsDown) {
   var frameBall = scoreLine.length % 2;
-  if(frameBall === 1) { //The second ball in the frame
+  if(frameBall === 0 && pinsDown === '/') {
+    throw new Error('Spare is not a valid first ball input, did you mean strike?');
+  } else if(frameBall === 1)  { //The second ball in the frame
     var ball1 = scoreLine.slice(-1);
     var frameScore = parseInt(ball1) + parseInt(pinsDown);
     if(frameScore > 10) {
