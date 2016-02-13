@@ -3,6 +3,7 @@ var Scorer = require('./Scorer');
 var Parser = require('./Parser');
 var Immutable = require('immutable');
 var _ = require('lodash');
+var readline = require('readline');
 
 function processSetup(line, state) {
   var players = Parser.parseWholePositiveNumber(line);
@@ -10,18 +11,7 @@ function processSetup(line, state) {
   for(var i = 0; i < players; i++) {
     playerScores = playerScores.push('');
   }
-  console.log('Enter pins knocked down for each roll by each player hitting enter after each roll: ');
   return state.set('gameState', 'in progress').set('playerScores', playerScores).set('frame', 1);
-}
-
-function findCurrentPlayer(state) {
-  return _.findIndex(state.get('playerScores').toJS(), (score) => {
-    if(state.get('frame') < 10) {
-      return score.length < (state.get('frame') * 2);
-    } else {
-      return !Scorer.isEndOfGame(score);
-    }
-  });
 }
 
 function processGame(line, state) {
@@ -41,6 +31,17 @@ function processGame(line, state) {
   return newState;
 }
 
+
+function findCurrentPlayer(state) {
+  return _.findIndex(state.get('playerScores').toJS(), (score) => {
+      if(state.get('frame') < 10) {
+        return score.length < (state.get('frame') * 2);
+      } else {
+        return !Scorer.isEndOfGame(score);
+      }
+    });
+}
+
 exports.isCompletedState = function(state) {
   return state.get('gameState') === 'complete';
 };
@@ -50,16 +51,38 @@ exports.newGameState = function() {
 };
 
 exports.process = function(line, state) {
-  try {
     switch (state.get('gameState')) {
       case "setup":
-        return processSetup(line, state);
+        var newState = processSetup(line, state);
+        console.log('Enter pins knocked down for each roll by each player hitting enter after each roll: ');
+        return newState;
       case "in progress":
         return processGame(line, state);
     }
-  } catch (e) {
-    console.log(e.message);
-    console.log('Please re-enter correct value: ');
-    return state;
-  }
+};
+
+exports.run = function () {
+  var rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+    terminal: false
+  });
+
+  var state = exports.newGameState();
+  console.log('Please enter number of players: ');
+  rl.on('line', (line) => {
+    try {
+      state = exports.process(line, state);
+    } catch (e) {
+      console.log(e.message);
+      console.log('Please re-enter correct value: ');
+      return state;
+    }
+    if(exports.isCompletedState(state)) {
+      console.log('Game Complete!');
+      console.log('Final Scores:');
+      _.forEach(state.get('finalScores').toJS(), (score) => {console.log(score);});
+      process.exit();
+    }
+  });
 };

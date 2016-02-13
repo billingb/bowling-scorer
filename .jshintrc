@@ -89,6 +89,7 @@
   // Custom Globals
   "globals"       : {
     "module": true,
-    "require": true
+    "require": true,
+	 "process": true
   }        // additional predefined global variables
 }
