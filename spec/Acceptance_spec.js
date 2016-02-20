@@ -18,7 +18,7 @@ describe('Acceptance E2E Tests', function () {
                  'x', '2' ,'2', '5', '/', //Frame 8
                  'x', '2' ,'2', '5', '/', //Frame 9
        'x', 'x', 'x', '2', '2', '5', '/', 'x']; //Frame 10
-    state = _.reduce(input, (state, line) => {
+    state = _.reduce(input, function (state, line) {
         return Engine.process(line, state);
   }, state);
     Engine.isCompletedState(state).should.be.true;

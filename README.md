@@ -1,8 +1,13 @@
 # bowling-scorer
+- [ES5 Brance](#es5-branch)
 - [Intro](#intro)
 - [Quick Start](#quick-start)
 - [Full Development Instructions](#full-development-instructions)
 - [Development Thoughts](#development-thoughts)
+
+# ES5 Branch
+This is a branch to support running on older versions of node that do not support ES6. This branch should work on
+any version of node supporting ES5.
 
 # Intro
 A javascript utility to score a bowling game interactively. Created for a challenge provided as part of the interview
@@ -11,7 +16,7 @@ process for a software engineering position.
 # Quick Start
 *for full instructions see the "Full Installation Instructions" at the bottom of this page*
 ## Prerequisites
-* node.js **version 4 or newer** (this project uses ES6)
+* node.js version .10 or newer
 
 ## Running the utility
 * `npm install` to fetch the dependencies
@@ -66,13 +71,6 @@ When developing on this application the linter, jshint (<http://jshint.com/docs/
 code clean. JSHint can be run by executing `npm run lint`
 
 # Development Thoughts
-## ES6 (ES2015)
-This is the second application I have had the opportunity to use the new ES6 standard for. I wanted to take this
-opportunity to learn more about the new language features that have been introduced and start getting comfortable
-with those features. I still have some inconsistency in using the new features and figuring out how they best fit,
-for instnace I use the arrow functions in the code (=> syntax) but in the tests I wrote the older syntax in
-the it and describe lines.
-
 ## Functional Style, Immutable.js
 I wanted to use a functional style in this program as I have been learning Clojure lately and really like the
 function paradigm. I decided to use Immutable.js (<https://facebook.github.io/immutable-js/>) to get Clojure style

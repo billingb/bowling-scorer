@@ -22,7 +22,7 @@ function processGame(line, state) {
   var newState = state.set('playerScores', currentScores);
   if (Scorer.isEndOfGame(newState.get('playerScores').last())) {
     newState = newState.set('gameState', 'complete');
-    newState = newState.set('finalScores', Immutable.List(_.map(currentScores.toJS(), (scoreLine) => {
+    newState = newState.set('finalScores', Immutable.List(_.map(currentScores.toJS(), function(scoreLine){
         return Scorer.score(scoreLine);
     })));
   } else if(findCurrentPlayer(newState) === -1) {
@@ -33,7 +33,7 @@ function processGame(line, state) {
 
 
 function findCurrentPlayer(state) {
-  return _.findIndex(state.get('playerScores').toJS(), (score) => {
+  return _.findIndex(state.get('playerScores').toJS(), function(score) {
       if(state.get('frame') < 10) {
         return score.length < (state.get('frame') * 2);
       } else {
@@ -70,7 +70,7 @@ exports.run = function () {
 
   var state = exports.newGameState();
   console.log('Please enter number of players: ');
-  rl.on('line', (line) => {
+  rl.on('line', function (line) {
     try {
       state = exports.process(line, state);
     } catch (e) {
@@ -81,7 +81,7 @@ exports.run = function () {
     if(exports.isCompletedState(state)) {
       console.log('Game Complete!');
       console.log('Final Scores:');
-      _.forEach(state.get('finalScores').toJS(), (score) => {console.log(score);});
+      _.forEach(state.get('finalScores').toJS(), function (score) {console.log(score);});
       process.exit();
     }
   });
