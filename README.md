@@ -75,5 +75,5 @@ the it and describe lines.
 
 ## Functional Style, Immutable.js
 I wanted to use a functional style in this program as I have been learning Clojure lately and really like the
-function paradigm. I decided to use Immutable.js (<https://facebook.github.io/immutable-js/>) to get Clojure style
+functional paradigm. I decided to use Immutable.js (<https://facebook.github.io/immutable-js/>) to get Clojure style
 data structures that are much safer to write functional code with since they prevent accidental side effects.
