@@ -8,6 +8,23 @@
 A javascript utility to score a bowling game interactively. Created for a challenge provided as part of the interview
 process for a software engineering position.
 
+# The challenge
+Create an application to score a bowling game, first for a single player and then for multiple players. [Full challenge
+details](CHALLENGE.md)
+
+# Notes and Questions
+The basic version was completed at hash 1171112
+
+I decided to use JavaScript to complete this challenge as I’ve been wanting a good small problem to write functional JS
+and I have also wanted to use ES6 (ES2015). This code is my first interactive JS program and the first time I have done a purely
+functional javascript approach. I'm proud of what I've produced here, but I’m sure there are improvements that can be made.
+
+The one thing I would raise for code review is a question, am I being too clever with the scoring by keeping it all
+as a string for each player? More generally, should the data structure contain more explicit data such as current
+player turn, frame, ball number, etc? If I had been developing this with a team I would definitely have talked over
+this design aspect with team members. On one hand I really like how it turned out, but I’m not sure if I’m sacrificing
+code readability.
+
 # Quick Start
 *for full instructions see the "Full Installation Instructions" at the bottom of this page*
 ## Prerequisites
