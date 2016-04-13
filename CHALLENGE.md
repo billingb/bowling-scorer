@@ -11,7 +11,7 @@ on the command line (or another UI) representing the pins knocked down by each r
 complete stop accepting input and display the score. Make sure to prevent invalid input.
 
 ### Test cases
-The following should inputs should score correctly:
+The following inputs should score correctly:
 * entering "0" 20 times results in a score of 0
 * entering "10" 12 times results in a score of 300
 * entering "7" followed by "7" should not be allowed (there are only 10 pins)
