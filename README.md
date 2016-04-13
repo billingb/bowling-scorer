@@ -1,6 +1,9 @@
 # bowling-scorer
 - [Intro](#intro)
-- [Quick Start](#quick-start)
+- [Challenge Definition](#challenge-definition)
+- [Notes and Questions](#notes-and-questions)
+- [Continuous Integration](#continuous-integration)
+- [Developer Quick Start](#developer-quick-start)
 - [Full Development Instructions](#full-development-instructions)
 - [Development Thoughts](#development-thoughts)
 
@@ -8,7 +11,7 @@
 A javascript utility to score a bowling game interactively. Created for a challenge provided as part of the interview
 process for a software engineering position.
 
-# The challenge
+# Challenge Definition
 Create an application to score a bowling game, first for a single player and then for multiple players. [Full challenge
 details](CHALLENGE.md)
 
@@ -25,7 +28,10 @@ player turn, frame, ball number, etc? If I had been developing this with a team 
 this design aspect with team members. On one hand I really like how it turned out, but I’m not sure if I’m sacrificing
 code readability.
 
-# Quick Start
+# Continuous Integration
+Travis CI is running continous integration for this project at [https://travis-ci.org/billingb/bowling-scorer](https://travis-ci.org/billingb/bowling-scorer)
+
+# Developer Quick Start
 *for full instructions see the "Full Installation Instructions" at the bottom of this page*
 ## Prerequisites
 * node.js **version 4 or newer** (this project uses ES6)
